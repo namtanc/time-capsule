@@ -2,23 +2,32 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Time Capsule</title>
-
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
     <script src="/__/firebase/8.2.2/firebase-app.js"></script>
     <script src="/__/firebase/8.2.2/firebase-firestore.js"></script>
     <script src="/__/firebase/init.js"></script>
-
-    <style media="screen"></style>
-
+    
+    <title>Time Capsule</title>
     <body>
-        <div id="load"></div>
+        <div id="root"></div>
         <div id="loadData"></div>
         <div class="messageForm">
-            <span>Message</span><br><input type="text" id="message" placeholder="message"><br>
-            <span>Sender:</span><br><input type="text" id="name" placeholder="name"><br>
-            <span>Email:</span><br><input type="text" id="email" placeholder="email"><br>
+            <span>Message</span><br>
+            <input type="text" id="message" placeholder="message"><br>
+            <span>Sender:</span><br>
+            <input type="text" id="name" placeholder="name"><br>
+            <span>Email:</span><br>
+            <input type="text" id="email" placeholder="email"><br>
             <button onclick="insertMessage()">add</button>
         </div>
     </body>
