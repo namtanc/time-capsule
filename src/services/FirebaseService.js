@@ -1,30 +1,49 @@
 import React, { Component } from 'react';
 
 import firebase from 'firebase/app';
-import "firebase/auth";
+import 'firebase/auth';
 import 'firebase/firestore';
 
 export default function WithFirebaseService(WrappedComponent) {
     const isAppExist = !firebase.app.length;
+    
+    return class FirebaseService extends Component {
+        constructor() {
+            super();
+            this.state = {
+                messages: null
+            }
+        }
 
-    return class FirebaseService extends Component {        
+        componentDidUpdate() {
+            if (isAppExist && !this.state.messages) {
+                this.fetchMessages();
+            }
+        }
+
         initialize() {
             if (!isAppExist) {
                 firebase.initializeApp(process.env.FIREBASE_CONFIG);
             }
+            else {
+                console.log('fetching..')
+                this.fetchMessages();
+            }
         }
         
-        insertMessage = (message, name, email) => {
-            !isAppExist && firebase.firestore().collection('capsules').add({ message, name, email });
+        insertMessage = (message) => {
+            !isAppExist && firebase.firestore().collection('capsules').add(message);
         }
         
         fetchMessages() {
-            firebase.firestore().collection('capsules').get().then((users) => users.docs.map((u) => (u.data())));
+            console.log('fetching..')
+            firebase.firestore().collection('capsules').get()
+                .then((users) => this.setState({ messages: users.docs.map((u) => (u.data())) }))
         }
 
         render() {
             this.initialize();
-            return <WrappedComponent loading={isAppExist} fetchMessages={this.fetchMessages} insertMessage={this.insertMessage} />;
+            return <WrappedComponent messages={this.state.messages} insertMessage={this.insertMessage} />;
         }
     };
 }
