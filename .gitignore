@@ -11,6 +11,7 @@ firebase.json
 # Config
 .gitconfig
 .github/
+env.js
 
 # Logs
 logs
