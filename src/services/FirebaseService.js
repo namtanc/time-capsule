@@ -1,10 +1,8 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component } from 'react';
 
 import firebase from 'firebase/app';
 import "firebase/auth";
 import 'firebase/firestore';
-
-const firebaseConfig = {};
 
 export default function WithFirebaseService(WrappedComponent) {
     const isAppExist = !firebase.app.length;
@@ -12,7 +10,7 @@ export default function WithFirebaseService(WrappedComponent) {
     return class FirebaseService extends Component {        
         initialize() {
             if (!isAppExist) {
-                firebase.initializeApp(firebaseConfig);
+                firebase.initializeApp(process.env.FIREBASE_CONFIG);
             }
         }
         
