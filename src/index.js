@@ -1,10 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import { MessageForm } from './Form';
+import Main from './Main';
 
-const Root = () => {
-    return <MessageForm />;
-}
-
-render(<Root />, document.getElementById('root'));
+render(<Main />, document.getElementById('root'));
