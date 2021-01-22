@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-
 const DARK = 'dark';
 const WHITE = 'white';
 const COLORFUL = 'colorful';

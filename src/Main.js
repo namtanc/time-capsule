@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { WithFirebaseService } from './services/FirebaseService';
-import MessageForm from './MessageForm';
+import MessageForm from './components/MessageForm/MessageForm';
 import MessageList from './MessageList';
 
 const Container = styled.div`

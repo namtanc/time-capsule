@@ -4,6 +4,8 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
+import { formatMessages } from '../Utils';
+
 export function WithFirebaseService(WrappedComponent) {
     const isFirebaseInitialized = () => firebase.apps?.length > 0;
     const [messages, setMessages] = useState(null);
@@ -12,7 +14,7 @@ export function WithFirebaseService(WrappedComponent) {
         if (!isFirebaseInitialized()) {
             await firebase.initializeApp(process.env.FIREBASE_CONFIG);
             const list = await fetchMessages();
-            setMessages(list);
+            setMessages(formatMessages(list));
         }
     }, [firebase.apps]);
 
