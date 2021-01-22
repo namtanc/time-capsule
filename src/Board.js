@@ -5,7 +5,7 @@ const Container = styled.div`
     display: flex;
     flex-grow: 2;
     flex-basis: 0;
-    margin: 36px 24px 36px 24px;
+    margin: 36px;
 `;
 const MessageList = styled.ul`
     width: 100%;
@@ -17,7 +17,7 @@ const MessageList = styled.ul`
 const MessageContainer = styled.li`
     background-color: #fff;
     border-radius: 4px;
-    box-shadow: 3px 4px 9px #ededed;
+    box-shadow: 3px 5px 2px #e7f2f0;
     margin: 12px;
 `;
 const MessageWrapper = styled.div`

@@ -66,10 +66,10 @@ const SubmitButton = styled.button`
 `;
 
 const MessageFormComponent = (props) => {
-    const [message, setMessage] = useState('');
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [targetdDate, setTargetdDate] = useState('');
+    const [name, setName] = useState('name');
+    const [email, setEmail] = useState('default@mail.com');
+    const [message, setMessage] = useState('hello hello hello');
+    //const [targetdDate, setTargetdDate] = useState('defaultDate');
     
     const onSubmit = () => { 
         props.insertMessage({ message, name, email, 
