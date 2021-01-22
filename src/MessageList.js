@@ -5,9 +5,8 @@ const Container = styled.div`
     display: flex;
     flex-grow: 2;
     flex-basis: 0;
-    margin: 36px;
 `;
-const MessageList = styled.ul`
+const MessageListWrapper = styled.ul`
     width: 100%;
     list-style: none;
     border: 1px solid #f7f9fb;
@@ -22,13 +21,15 @@ const MessageContainer = styled.li`
 `;
 const MessageWrapper = styled.div`
     margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
 `;
 const Name = styled.span`
 `;
 const Content = styled.span`
 `;
 
-const BoardComponent = (props) => {
+const MessageList = (props) => {
     if (!props || !props.messages) return null;
 
     const renderMessage = (message, i) => {
@@ -36,7 +37,7 @@ const BoardComponent = (props) => {
             <MessageContainer>
                 <MessageWrapper>
                     <Name>{message['name']}</Name>
-                    <Content>{message['name']}</Content>
+                    <Content>{message['email']}</Content>
                 </MessageWrapper>
             </MessageContainer>
         );
@@ -49,9 +50,9 @@ const BoardComponent = (props) => {
     const renderBoard = () => {
         return (
             <Container>
-                <MessageList>
+                <MessageListWrapper>
                     {renderMessageList()}
-                </MessageList>
+                </MessageListWrapper>
             </Container>
         );
     };
@@ -59,4 +60,4 @@ const BoardComponent = (props) => {
     return renderBoard();
 };
 
-export default BoardComponent;
+export default MessageList;

@@ -12,7 +12,6 @@ const Container = styled.div`
 const FormWrapper = styled.ul`
     list-style: none;
     width: 100%;
-    margin: 48px;
     padding: 32px;
     border-radius: 24px;
     background-color: #f7f9fb;

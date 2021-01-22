@@ -10,7 +10,7 @@ Online time capsule using Firebase and React JS
 - User Interface
   - Setup React `[DONE]`
   - Form for send message `[DONE]`
-  - Opened capsules board
+  - Opened capsules board `[DONE]`
   - SenderEmailService - fetch every x mins
   - Styling
 - Authentication
