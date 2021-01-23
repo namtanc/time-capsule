@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { extend } from 'styled-components';
 
 import { WithFirebaseService } from './services/FirebaseService';
-import MessageForm from './MessageForm';
-import MessageList from './MessageList';
+import MessageForm from './components/MessageForm/MessageForm';
+import MessageList from './components/MessageList/MessageList';
 
 const Container = styled.div`
     width: 100%;
@@ -21,23 +21,28 @@ const Wrapper = styled.div`
     margin: auto;
 `;
 
+const Loading = styled(Wrapper)`
+    color: blue;
+`;
+
 const Main = (props) =>  {
-    const renderLoading = () => <>It's happening!</>
+    const renderLoading = () => <Loading>It's happening!</Loading>
     
     const renderFormAndBoard = () => (
-        <>
+        <Wrapper>
             <MessageForm {...props} />
             <MessageList {...props} />
-        </>
+        </Wrapper>
     );
     
     return (
         <Container>
-            <Wrapper>
-                {!props.messages ? renderLoading() : renderFormAndBoard() }
-            </Wrapper>
+            {!props.messages ? renderLoading() : renderFormAndBoard() }
         </Container>
     );
 }
 
+Main.displayName = 'TimeCapsule';
+Container.displayName = 'Container';
+Wrapper.displayName = 'Wrapper';
 export default () => WithFirebaseService(Main);
