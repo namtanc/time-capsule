@@ -18,8 +18,8 @@ const DefaultValue = {
     [NAME]: '',
     [EMAIL]: '',
     [MESSAGE]: '',
-    [RECORDED_DATE]: Date.now(),
-    [TARGETED_DATE]: Date.now(),
+    [RECORDED_DATE]: new Date(),
+    [TARGETED_DATE]: new Date(),
     [TAGS]: [],
 };
 

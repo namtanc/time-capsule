@@ -1,19 +1,38 @@
 import React, { useState } from 'react';
+
 import { Message } from '../../models/Message';
+import DatePicker from '../DatePicker/DatePicker';
+
 import { Container, Label, FormTextArea, FormTextInput, TextArea, 
     TextInput, Wrapper, SubmitButton } from './MessageForm.styled';
 
-const getFieldAndForm = (id) => {
-    return id === 'message' ? { Field: TextArea, Form: FormTextArea }
-        : { Field: TextInput, Form: FormTextInput };
-}
-const LabelAndInput = (id, label, placeholder, value, onChange) => {
+const getFormType = (id) => id === 'message' ? FormTextArea : FormTextInput;
+const getFormInput = (id) => {
+    switch(id) {
+        case 'message':
+            return TextArea;
+        case 'targetedDate':
+        case 'recordedDate':
+            return DatePicker;   
+        default: 
+            return TextInput;
+    }
+};
+
+const LabelAndInput = (id, label, placeholder, value, setValue) => {
+    const Form = getFormType(id);
+    const Input = getFormInput(id);
+
+    const onChange = (e) => (Input.displayName === 'DatePicker') ?
+        setValue(new Date(e))
+        : setValue(e.target?.value);
+
     const inputProps = { id, placeholder, value, onChange, type: 'text' };
-    const { Field, Form } = getFieldAndForm(id);
+
     return (
         <Form key={id}>
             <Label>{label}</Label>
-            <Field {...inputProps} />
+            <Input {...inputProps} />
         </Form>
     );
 }
@@ -29,14 +48,10 @@ const MessageForm = (props) => {
     const onSubmit = () => { 
         props.insertMessage({ message, name, email, recordedDate, targetedDate });
     }
-
-    const handleChange = (onChange) => (e) => {
-        onChange(e.target?.value);
-    }
     
     const renderFields = () => {
         const getLabelAndInput = (label, placeholder, value, onChange) => ({ label, placeholder, value, onChange });
-        const field = (id, { label, placeholder, value, onChange }) => LabelAndInput(id, label, placeholder, value, handleChange(onChange));
+        const field = (id, { label, placeholder, value, onChange }) => LabelAndInput(id, label, placeholder, value, onChange);
         const FormLabelAndInputs = {
             [Message.Field.name]: getLabelAndInput('Name', 'name', name, setName),
             [Message.Field.email]: getLabelAndInput('Email', 'email', email, setEmail),
