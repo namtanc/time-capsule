@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 const DatePicker = ({ value, onChange }) => {
     return (
@@ -8,6 +9,7 @@ const DatePicker = ({ value, onChange }) => {
             isClearable={false}
             onChange={onChange}
             placeholderText=""
+            dateFormat="dd/MM/yyyy"
         />
     );
 };

@@ -1,6 +1,6 @@
 # Time Capsule :mailbox_with_no_mail:
 Online time capsule using Firebase and React JS
-(Project Kanban)[https://github.com/users/wylieee/projects/1]
+[Project Kanban](https://github.com/users/wylieee/projects/1)
 
 ### Features
 1. Create a time capsule and send it via email in the set time period

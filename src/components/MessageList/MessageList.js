@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Container, Wrapper } from './MessageList.styled';
+import { Container, Wrapper, RefreshButton } from './MessageList.styled';
 import Message from './Message';
 
 const MessageList = (props) => {
-    if (!props || !props.messages) return null;
+    if (!props || !props.messages || !props.refresh) return null;
 
     function renderMessageList() {
         return (props.messages || []).map((m, i) => Message(m, i));
@@ -14,6 +14,7 @@ const MessageList = (props) => {
         return (
             <Container>
                 <Wrapper>
+                    <RefreshButton onClick={props.refresh} />
                     {renderMessageList()}
                 </Wrapper>
             </Container>

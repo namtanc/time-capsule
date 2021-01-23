@@ -12,7 +12,6 @@ const getFormInput = (id) => {
         case 'message':
             return TextArea;
         case 'targetedDate':
-        case 'recordedDate':
             return DatePicker;   
         default: 
             return TextInput;
@@ -42,8 +41,8 @@ const MessageForm = (props) => {
     const [email, setEmail] = useState(Message.DefaultValue.email);
     const [message, setMessage] = useState(Message.DefaultValue.message);
     const [targetedDate, setTargetedDate] = useState(Message.DefaultValue.targetedDate);
-    const [recordedDate, setRecordedDate] = useState(Message.DefaultValue.recordedDate);
     const [tags, setTags] = useState(Message.DefaultValue.tags);
+    const recordedDate = Message.DefaultValue.recordedDate;
 
     const onSubmit = () => { 
         props.insertMessage({ message, name, email, recordedDate, targetedDate });
@@ -57,7 +56,6 @@ const MessageForm = (props) => {
             [Message.Field.email]: getLabelAndInput('Email', 'email', email, setEmail),
             [Message.Field.message]: getLabelAndInput('Message', 'message', message, setMessage),
             [Message.Field.targetedDate]: getLabelAndInput('TargetedDate', 'targetedDate', targetedDate, setTargetedDate),
-            [Message.Field.recordedDate]: getLabelAndInput('RecordedDate', 'recordedDate', recordedDate, setRecordedDate),
             [Message.Field.tags]: getLabelAndInput('Tags', 'tags', tags, setTags),
         };
 
