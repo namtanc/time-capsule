@@ -1,11 +1,13 @@
 import React from 'react';
-import styled, { extend } from 'styled-components';
+import styled from 'styled-components';
 
 import { WithFirebaseService } from './services/FirebaseService';
 import MessageForm from './components/MessageForm/MessageForm';
 import MessageList from './components/MessageList/MessageList';
+import GlobalStyle, { Div } from './components/common/Base';
+import { fontSize } from './components/common/Font';
 
-const Container = styled.div`
+const Container = styled(Div)`
     width: 100%;
     height: 100%;
     display: flex;
@@ -14,7 +16,7 @@ const Container = styled.div`
     background-color: #fff;
 `;
     
-const Wrapper = styled.div`
+const Wrapper = styled(Div)`
     display: flex;
     width: 800px;
     height: 600px;
@@ -23,6 +25,7 @@ const Wrapper = styled.div`
 
 const Loading = styled(Wrapper)`
     color: blue;
+    ${fontSize.L}
 `;
 
 const Main = (props) =>  {
@@ -37,6 +40,7 @@ const Main = (props) =>  {
     
     return (
         <Container>
+            <GlobalStyle />
             {!props.messages ? renderLoading() : renderFormAndBoard() }
         </Container>
     );

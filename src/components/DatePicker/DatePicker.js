@@ -1,17 +1,20 @@
 import React from 'react';
-import ReactDatePicker from 'react-datepicker';
+
+import { DatePicker, Wrapper } from './DatePicker.styled';
 import "react-datepicker/dist/react-datepicker.css";
 
-const DatePicker = ({ value, onChange }) => {
+const DatePickerComponent = ({ value, onChange }) => {
     return (
-        <ReactDatePicker
-            selected={value}
-            isClearable={false}
-            onChange={onChange}
-            placeholderText=""
-            dateFormat="dd/MM/yyyy"
-        />
+        <Wrapper>
+            <DatePicker
+                selected={value}
+                isClearable={false}
+                onChange={onChange}
+                placeholderText=""
+                dateFormat="dd/MM/yyyy"
+            />
+        </Wrapper>
     );
 };
-DatePicker.displayName = 'DatePicker';
-export default DatePicker;
+DatePickerComponent.displayName = 'DatePicker';
+export default DatePickerComponent;

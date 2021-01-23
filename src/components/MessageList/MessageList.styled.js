@@ -1,24 +1,21 @@
 import styled from 'styled-components';
-import { Button, Ul } from '../Base.styled';
+import { Button, Div, Ul } from '../common/Base';
 import RefreshIcon from '../../assets/icon-refresh.svg';
 
-export const Container = styled.div`
+export const Container = styled(Div)`
     display: flex;
     flex-grow: 2;
     flex-basis: 0;
 `;
 export const Wrapper = styled(Ul)`
     width: 100%;
-    border: 1px solid #f7f9fb;
-    border-radius: 16px;
 `;
 
 export const RefreshButton = styled(Button)`
     width: 100%;
     list-style: none;
-    border: 1px solid #f7f9fb;
     border-radius: 16px;
-    background: url(${RefreshIcon}) no-repeat 100px center;
+    background: #f7f9fb url(${RefreshIcon}) no-repeat center;
 `;
 
 Container.displayName = 'MessageListContainer';
