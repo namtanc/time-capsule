@@ -31,10 +31,10 @@ export const WithFirebaseService = (WrappedComponent) => {
         const { isValid, errors } = validateMessage(message);
         setErrorsList(errors);
 
-        // if (isValid) {
-        //     firebase.firestore().collection('capsules').add(message);
-        //     fetchOpenedMessages();
-        // }
+        if (isValid) {
+            firebase.firestore().collection('capsules').add(message);
+            fetchOpenedMessages();
+        }
     }
 
     return <WrappedComponent messages={messages} errorsList={errorsList} insertMessage={insertMessage} refresh={fetchOpenedMessages} />
