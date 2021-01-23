@@ -19,18 +19,15 @@ const LabelAndInput = (id, label, placeholder, value, onChange) => {
 }
 
 const MessageForm = (props) => {
-    const [name, setName] = useState('name');
-    const [email, setEmail] = useState('default@mail.com');
-    const [message, setMessage] = useState('hello hello hello');
-    const [targetedDate, setTargetedDate] = useState('');
-    const [recordedDate, setRecordedDate] = useState('');
-    const [tags, setTags] = useState('');
+    const [name, setName] = useState(Message.DefaultValue.name);
+    const [email, setEmail] = useState(Message.DefaultValue.email);
+    const [message, setMessage] = useState(Message.DefaultValue.message);
+    const [targetedDate, setTargetedDate] = useState(Message.DefaultValue.targetedDate);
+    const [recordedDate, setRecordedDate] = useState(Message.DefaultValue.recordedDate);
+    const [tags, setTags] = useState(Message.DefaultValue.tags);
 
     const onSubmit = () => { 
-        props.insertMessage({ message, name, email, 
-            recordedDate: Date.now(),
-            targetedDate:  Date.now()
-        });
+        props.insertMessage({ message, name, email, recordedDate, targetedDate });
     }
 
     const handleChange = (onChange) => (e) => {
@@ -50,7 +47,6 @@ const MessageForm = (props) => {
         };
 
         const fields = Object.entries(FormLabelAndInputs);
-        
         return fields.map((val) => field(val[0], {...val[1]}));
     }
 
