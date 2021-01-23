@@ -6,10 +6,10 @@ export const fontMonogram = css`
 `;
 
 export const fontSize = {
-    XS: css`${fontMonogram} font-size: 1rem;`,
-    S: css`${fontMonogram} font-size: 1.5rem;`,
-    M: css`${fontMonogram} font-size: 2rem;`,
-    L: css`${fontMonogram} font-size: 3rem;`,
+    XS: css`font-size: 1rem;`,
+    S: css`font-size: 1.5rem;`,
+    M: css`font-size: 2rem;`,
+    L: css`font-size: 3rem;`,
 };
 
 export const font = css`

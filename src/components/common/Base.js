@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
 
+import { white,blue } from './Color';
 import { font, fontMonogram, fontSize } from './Font';
 import { Spacing } from './Spacing';
 
@@ -15,23 +16,26 @@ export const inputStyle = css`
 `;
 
 export const Input = styled.input`
+    ${fontMonogram}
     ${fontSize.S}
     ${inputStyle}
 `;
 export const InputArea = styled.textarea`
+    ${fontMonogram}
     ${fontSize.S}
     ${inputStyle}
     resize: none;
 `;
 
 export const Button = styled.button`
+    ${fontMonogram}
     ${fontSize.M}
-    color: white;
+    color: ${white};
     padding: 10px;
     font-weight: 600;
     border: none;
     border-radius: 6px;
-    background: #07987d;
+    background-color: ${blue};
     cursor: pointer;
 `;
 

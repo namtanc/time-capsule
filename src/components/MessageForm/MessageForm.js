@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 
 import { Message } from '../../models/Message';
+import { formatDateTimeStamp } from '../../Utils';
 import DatePicker from '../DatePicker/DatePicker';
 
 import { Container, Label, FormTextArea, FormTextInput, TextArea, 
     TextInput, Wrapper, SubmitButton } from './MessageForm.styled';
 
-const getFormType = (id) => id === 'message' ? FormTextArea : FormTextInput;
-const getFormInput = (id) => {
-    switch(id) {
+const getFormType = (fieldName) => fieldName === 'message' ? FormTextArea : FormTextInput;
+const getFormInput = (fieldName) => {
+    switch(fieldName) {
         case 'message':
             return TextArea;
         case 'targetedDate':
@@ -18,18 +19,20 @@ const getFormInput = (id) => {
     }
 };
 
-const LabelAndInput = (id, label, placeholder, value, setValue) => {
-    const Form = getFormType(id);
-    const Input = getFormInput(id);
+const LabelAndInput = (fieldName, value, setValue) => {
+    const label = Message.Label[fieldName];
+    const placeholder = Message.PlaceHolder[fieldName];
+    const Form = getFormType(fieldName);
+    const Input = getFormInput(fieldName);
 
     const onChange = (e) => (Input.displayName === 'DatePicker') ?
         setValue(new Date(e))
         : setValue(e.target?.value);
 
-    const inputProps = { id, placeholder, value, onChange, type: 'text' };
+    const inputProps = { fieldName, placeholder, value, onChange, type: 'text' };
 
     return (
-        <Form key={id}>
+        <Form key={fieldName}>
             <Label>{label}</Label>
             <Input {...inputProps} />
         </Form>
@@ -42,21 +45,23 @@ const MessageForm = (props) => {
     const [message, setMessage] = useState(Message.DefaultValue.message);
     const [targetedDate, setTargetedDate] = useState(Message.DefaultValue.targetedDate);
     const [tags, setTags] = useState(Message.DefaultValue.tags);
-    const recordedDate = Message.DefaultValue.recordedDate;
 
     const onSubmit = () => { 
-        props.insertMessage({ message, name, email, recordedDate, targetedDate });
+        props.insertMessage({ message, name, email, 
+            recordedDate: formatDateTimeStamp(Message.DefaultValue.recordedDate), 
+            targetedDate: formatDateTimeStamp(targetedDate)
+        });
     }
     
     const renderFields = () => {
-        const getLabelAndInput = (label, placeholder, value, onChange) => ({ label, placeholder, value, onChange });
-        const field = (id, { label, placeholder, value, onChange }) => LabelAndInput(id, label, placeholder, value, onChange);
+        const getLabelAndInput = (value, onChange) =>({ value, onChange });
+        const field = (id, { value, onChange }) => LabelAndInput(id, value, onChange);
         const FormLabelAndInputs = {
-            [Message.Field.name]: getLabelAndInput('Name', 'name', name, setName),
-            [Message.Field.email]: getLabelAndInput('Email', 'email', email, setEmail),
-            [Message.Field.message]: getLabelAndInput('Message', 'message', message, setMessage),
-            [Message.Field.targetedDate]: getLabelAndInput('TargetedDate', 'targetedDate', targetedDate, setTargetedDate),
-            [Message.Field.tags]: getLabelAndInput('Tags', 'tags', tags, setTags),
+            [Message.Field.name]: getLabelAndInput(name, setName),
+            [Message.Field.email]: getLabelAndInput(email, setEmail),
+            [Message.Field.message]: getLabelAndInput(message, setMessage),
+            [Message.Field.targetedDate]: getLabelAndInput(targetedDate, setTargetedDate),
+            [Message.Field.tags]: getLabelAndInput(tags, setTags),
         };
 
         const fields = Object.entries(FormLabelAndInputs);

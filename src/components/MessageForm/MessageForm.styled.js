@@ -15,7 +15,7 @@ export const Wrapper = styled(Ul)`
     list-style: none;
     width: 100%;
     padding: ${Spacing.XL};
-    border-radius: ${Spacing.L};
+    border-radius: ${Spacing.XS};
     background-color: #f7f9fb;
 `;
 
