@@ -26,4 +26,4 @@ const DefaultValue = {
 export const Message = {
     Field,
     DefaultValue
-}
+};

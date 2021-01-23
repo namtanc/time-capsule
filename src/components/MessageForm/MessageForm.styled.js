@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -9,7 +8,7 @@ export const Container = styled.div`
     align-items: center;
 `;
 
-export const FormWrapper = styled.ul`
+export const Wrapper = styled.ul`
     list-style: none;
     width: 100%;
     padding: 32px;
@@ -17,21 +16,21 @@ export const FormWrapper = styled.ul`
     background-color: #f7f9fb;
 `;
 
-export const FormItemInput = styled.li`
+export const FormTextInput = styled.li`
     display: flex;
     margin-bottom: 8px;
 `;
-export const FormItemArea = styled.li`
+export const FormTextArea = styled.li`
     display: flex;
     flex-direction: column;
 `;
-export const FormLabel = styled.span`
+export const Label = styled.span`
     font-size: 16px;
     flex-grow: 1;
     flex-basis: 0;
     font-family: 'Poiret One', cursive;
 `;
-export const FormTextInput = styled.input`
+export const TextInput = styled.input`
     font-size: 12px;
     flex-basis: 0;
     flex-grow: 3;
@@ -41,7 +40,7 @@ export const FormTextInput = styled.input`
     border-radius: 3px;
     font-family: 'Raleway', sans-serif;
 `;
-export const FormTextArea = styled.textarea`
+export const TextArea = styled.textarea`
     font-size: 12px;
     height: 240px;
     padding: 2px;
@@ -63,3 +62,12 @@ export const SubmitButton = styled.button`
     font-family: 'Poiret One', cursive;
     font-weight: 600;
 `;
+
+Container.displayName = 'FormContainer';
+Wrapper.displayName = 'FormWrapper';
+FormTextInput.displayName = 'FormTextInput';
+FormTextArea.displayName = 'FormTextArea';
+Label.displayName = 'Label';
+TextInput.displayName = 'TextInput';
+TextArea.displayName = 'TextArea';
+SubmitButton.displayName = 'SubmitButton;'

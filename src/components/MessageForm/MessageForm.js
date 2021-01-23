@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import { Message } from '../../models/Message';
-import { Container, FormLabel, FormItemArea, FormItemInput, FormTextArea, 
-    FormTextInput, FormWrapper, SubmitButton } from './MessageForm.styled';
+import { Container, Label, FormTextArea, FormTextInput, TextArea, 
+    TextInput, Wrapper, SubmitButton } from './MessageForm.styled';
 
+const getFieldAndForm = (id) => {
+    return id === 'message' ? { Field: TextArea, Form: FormTextArea }
+        : { Field: TextInput, Form: FormTextInput };
+}
 const LabelAndInput = (id, label, placeholder, value, onChange) => {
     const inputProps = { id, placeholder, value, onChange, type: 'text' };
-    const Field = id == 'message' ? FormTextArea : FormTextInput;
-    const Form = id == 'message' ? FormItemArea : FormItemInput;
+    const { Field, Form } = getFieldAndForm(id);
     return (
-        <Form>
-            <FormLabel>{label}</FormLabel>
+        <Form key={id}>
+            <Label>{label}</Label>
             <Field {...inputProps} />
         </Form>
     );
 }
 
-const MessageFormComponent = (props) => {
+const MessageForm = (props) => {
     const [name, setName] = useState('name');
     const [email, setEmail] = useState('default@mail.com');
     const [message, setMessage] = useState('hello hello hello');
@@ -54,10 +57,10 @@ const MessageFormComponent = (props) => {
     const renderForm = () => {
         return (
             <Container>
-                <FormWrapper>
+                <Wrapper>
                     {renderFields()}
                     <SubmitButton onClick={onSubmit}>Add message</SubmitButton>
-                </FormWrapper>
+                </Wrapper>
             </Container>
         )
     }
@@ -65,4 +68,5 @@ const MessageFormComponent = (props) => {
     return renderForm();
 }
 
-export default MessageFormComponent;
+MessageForm.displayName = 'MessageForm';
+export default MessageForm;

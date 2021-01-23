@@ -6,7 +6,7 @@ import 'firebase/firestore';
 
 import { formatMessages } from '../Utils';
 
-export function WithFirebaseService(WrappedComponent) {
+function WithFirebaseService(WrappedComponent) {
     const isFirebaseInitialized = () => firebase.apps?.length > 0;
     const [messages, setMessages] = useState(null);
 
@@ -29,3 +29,5 @@ export function WithFirebaseService(WrappedComponent) {
 
     return <WrappedComponent messages={messages} insertMessage={insertMessage} />
 }
+
+export { WithFirebaseService };
