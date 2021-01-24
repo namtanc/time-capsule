@@ -4,16 +4,19 @@ import { WithFirebaseService } from './services/FirebaseService';
 import MessageForm from './components/MessageForm/MessageForm';
 import MessageList from './components/MessageList/MessageList';
 import GlobalStyle from './components/common/Base';
-import { Container, Loading, Wrapper } from './Main.styled';
+import { Container, Loading, RefreshButton, Wrapper } from './Main.styled';
 
 const Main = (props) =>  {
     const renderLoading = () => <Loading>It's happening!</Loading>
     
     const renderFormAndBoard = () => (
-        <Wrapper>
-            <MessageForm {...props} />
-            <MessageList {...props} />
-        </Wrapper>
+        <>
+            {/* <RefreshButton onClick={props.refresh} /> */}
+            <Wrapper>
+                <MessageForm {...props} />
+                <MessageList {...props} />
+            </Wrapper>
+        </>
     );
     
     return (

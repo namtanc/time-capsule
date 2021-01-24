@@ -22,6 +22,13 @@ const DefaultValue = {
     [TAGS]: [],
 };
 
+const FetchField = {
+    [NAME]: NAME,
+    [MESSAGE]: MESSAGE,
+    [TARGETED_DATE]: TARGETED_DATE,
+    [TAGS]: TAGS,
+}
+
 const Field = {
     [NAME]: NAME,
     [EMAIL]: EMAIL,
@@ -42,6 +49,7 @@ const PlaceHolder = {
 export const Message = {
     DefaultValue,
     Field,
+    FetchField,
     Label,
     PlaceHolder
 };

@@ -1,4 +1,4 @@
-export const Spacing = {
+export const Size = {
     XS: '0.25rem',
     S: '0.5rem',
     M: '1rem',

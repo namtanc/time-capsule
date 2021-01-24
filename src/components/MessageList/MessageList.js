@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Wrapper, RefreshButton } from './MessageList.styled';
+import { Container, Wrapper } from './MessageList.styled';
 import MessageItem from './MessageItem';
 
 const MessageList = (props) => {
@@ -13,7 +13,6 @@ const MessageList = (props) => {
     const renderBoard = () => {
         return (
             <Container>
-                <RefreshButton onClick={props.refresh} />
                 <Wrapper>
                     {renderMessageList()}
                 </Wrapper>

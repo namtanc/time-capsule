@@ -3,9 +3,8 @@ import { Message } from './models/Message';
 export const formatMessage = (message) => {
     if (!message) return null;
 
-    const formattedMessage = { ...message };
-
-    for(let field in Message.Field) {
+    const formattedMessage = {};
+    for(let field in Message.FetchField) {
         formattedMessage[field] = message[field] ?? Message.DefaultValue[field];
     }
 
@@ -21,4 +20,5 @@ export const formatDateString = (timestamp) => {
     return date.toLocaleDateString('en-GB');
 }
 
-export const formatDateTimeStamp = (date) => date.getTime();
+export const formatDateTimeStamp = (date) => date.setHours(0, 0, 0, 0);
+export const checkValidTargetedDate = (date) => formatDateTimeStamp(new Date()) > formatDateTimeStamp(date);

@@ -1,27 +1,25 @@
 import styled from 'styled-components';
 import { Button, Div, Input, InputArea, Li, Span, Ul } from '../common/Base';
 import { fontSize } from '../common/Font';
-import { Spacing } from '../common/Spacing';
+import { Size } from '../common/Size';
 
 export const Container = styled(Div)`
     display: flex;
-    flex-grow: 1;
+    flex-grow: 2;
     flex-basis: 0;
-    justify-content: center;
-    align-items: center;
 `;
 
 export const Wrapper = styled(Ul)`
     list-style: none;
     width: 100%;
-    padding: ${Spacing.XL};
-    border-radius: ${Spacing.XS};
+    padding: ${Size.XL};
+    border-radius: ${Size.XS};
     background-color: #f7f9fb;
 `;
 
 export const FormTextInput = styled(Li)`
     display: flex;
-    margin-bottom: ${Spacing.S};
+    margin-bottom: ${Size.S};
 `;
 export const FormTextArea = styled(Li)`
     display: flex;
@@ -39,7 +37,7 @@ export const TextInput = styled(Input)`
 
 export const TextArea = styled(InputArea)`
     height: 240px;
-    margin-top: ${Spacing.XS};
+    margin-top: ${Size.XS};
 `;
 
 export const SubmitButton = styled(Button)`

@@ -1,17 +1,18 @@
 import React from 'react';
 
 import { DatePicker, Wrapper } from './DatePicker.styled';
-import "react-datepicker/dist/react-datepicker.css";
+import { checkValidTargetedDate } from '../../Utils';
 
 const DatePickerComponent = ({ value, onChange }) => {
+    const classname = checkValidTargetedDate(value) && 'invalid';
     return (
-        <Wrapper>
+        <Wrapper className={classname}>
             <DatePicker
                 selected={value}
-                isClearable={false}
                 onChange={onChange}
                 placeholderText=""
                 dateFormat="dd/MM/yyyy"
+                isClearable={false}
             />
         </Wrapper>
     );

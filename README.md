@@ -15,10 +15,8 @@ Online time capsule using Firebase and React JS
 - Features
   - Show only opened capsules `[DONE]`
   - Add DatePicker `[DONE]`
-  - Refresh
-  - Validation
-  - Filter (sort, find)
-  - Add tags
+  - Refresh `[DONE]`
+  - Validation `[DONE]`
 - Styling
   - Make it beautiful
   - Responsive

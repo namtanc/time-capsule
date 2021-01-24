@@ -1,8 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ReactDatePicker from 'react-datepicker';
 
-import { fontMonogram, fontSize } from '../common/Font';
 import { Div, inputStyle } from '../common/Base';
+import { black, blue, green, red, white, yellow } from '../common/Color';
+import { fontMonogram, fontSize } from '../common/Font';
+import { Size } from '../common/Size';
+import "react-datepicker/dist/react-datepicker.css";
 
 export const DatePicker = styled(ReactDatePicker)`
     ${fontMonogram}
@@ -10,13 +13,75 @@ export const DatePicker = styled(ReactDatePicker)`
     ${inputStyle}
 `;
 
-export const Wrapper = styled(Div)`
-    .react-datepicker, .react-datepicker__current-month {
+const overrideWrapperAndHeader = css`
+    .react-datepicker {
         ${fontMonogram}
         ${fontSize.S}
     }
 
-    .react-datepicker__day--selected {
-        background-color: red;
+    .react-datepicker__day-name, .react-datepicker__current-month {
+        color: ${white};
+        ${fontSize.S}
+    }
+
+    .react-datepicker__header {
+        background: ${black};
+    }
+
+    .react-datepicker__triangle::before {
+        border-bottom-color: ${black} !important;
+    }
+
+    .react-datepicker__navigation--previous {
+        border-right-color: ${white};
+    }
+
+    .react-datepicker__navigation--next {
+        border-left-color: ${white};
     }
 `;
+
+const overrideCalendar = css`
+    .react-datepicker__day {
+        border-radius: ${Size.XS};
+    }
+
+    .react-datepicker__day:hover, .react-datepicker__day:focus {
+        color: ${white};
+        background: ${green};
+        outline: none;
+    }
+
+    .react-datepicker__day--today {
+        color: ${black};
+        background: none;
+        box-shadow: 0 0 1px 1px ${yellow};
+    }
+
+    .react-datepicker__day--selected {
+        color: ${white};
+        background-color: ${blue};
+    }
+`;
+
+const overrideInvalidDate = css`
+    &.invalid ${DatePicker} {
+        border-color: ${red};
+    }
+
+    &.invalid .react-datepicker__day--selected {
+        background-color: ${red};
+    }
+`;
+
+export const Wrapper = styled(Div)`
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 3;
+
+    ${overrideWrapperAndHeader}
+    ${overrideCalendar}
+    ${overrideInvalidDate}
+`;
+
+Wrapper.displayName = 'DatePickerWrapper';

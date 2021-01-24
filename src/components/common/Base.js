@@ -1,18 +1,24 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
 
-import { white,blue } from './Color';
+import { white, buttonColor, placeHolderColor, black } from './Color';
 import { font, fontMonogram, fontSize } from './Font';
-import { Spacing } from './Spacing';
+import { Size } from './Size';
 
 export default createGlobalStyle`
     ${font}
 `;
 
+const colorBlack = css`color: ${black};`;
 export const inputStyle = css`
-    padding: 0 ${Spacing.XS};
+    padding: 0 ${Size.XS};
     outline: none;
-    border: none;
-    border-radius: ${Spacing.XS};
+    border: 1px solid transparent;
+    border-radius: ${Size.XS};
+    ${colorBlack}
+
+    &::placeholder {
+        color: ${placeHolderColor}
+    }
 `;
 
 export const Input = styled.input`
@@ -35,23 +41,27 @@ export const Button = styled.button`
     font-weight: 600;
     border: none;
     border-radius: 6px;
-    background-color: ${blue};
+    background-color: ${buttonColor};
     cursor: pointer;
 `;
 
 export const Ul = styled.ul`
     ${fontMonogram}
+    ${colorBlack}
     list-style: none;
 `;
 
 export const Li = styled.li`
+    ${colorBlack}
     ${fontMonogram}
 `;
 
 export const Div = styled.div`
+    ${colorBlack}
     ${fontMonogram}
 `;
 
 export const Span = styled.span`
+    ${colorBlack}
     ${fontMonogram}
 `;
