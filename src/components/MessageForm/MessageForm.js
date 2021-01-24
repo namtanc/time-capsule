@@ -7,7 +7,7 @@ import DatePicker from '../DatePicker/DatePicker';
 import { Container, Label, FormTextArea, FormTextInput, TextArea, 
     TextInput, Wrapper, SubmitButton } from './MessageForm.styled';
 
-const getFormType = (fieldName) => fieldName === 'message' ? FormTextArea : FormTextInput;
+const getFormType = (fieldName) => (fieldName === 'message' || fieldName === 'targetedDate') ? FormTextArea : FormTextInput;
 const getFormInput = (fieldName) => {
     switch(fieldName) {
         case 'message':

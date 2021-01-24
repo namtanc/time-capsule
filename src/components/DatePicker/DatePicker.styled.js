@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import ReactDatePicker from 'react-datepicker';
 
-import { Div, inputStyle } from '../common/Base';
+import { Div, inputStyle, invalidStyle } from '../common/Base';
 import { black, blue, green, red, white, yellow } from '../common/Color';
 import { fontMonogram, fontSize } from '../common/Font';
 import { Size } from '../common/Size';
@@ -11,6 +11,7 @@ export const DatePicker = styled(ReactDatePicker)`
     ${fontMonogram}
     ${fontSize.S}
     ${inputStyle}
+    width: 100%;
 `;
 
 const overrideWrapperAndHeader = css`
@@ -66,22 +67,26 @@ const overrideCalendar = css`
 
 const overrideInvalidDate = css`
     &.invalid ${DatePicker} {
-        border-color: ${red};
+        ${invalidStyle}
     }
 
     &.invalid .react-datepicker__day--selected {
         background-color: ${red};
     }
 `;
+const overrideInputField = css`
+    &, .react-datepicker-wrapper, .react-datepicker__input-container {
+        display: flex;
+        flex-grow: 1;
+    }
+`;
 
 export const Wrapper = styled(Div)`
-    display: flex;
-    flex-basis: 0;
-    flex-grow: 3;
-
+    margin-top: ${Size.XS};
     ${overrideWrapperAndHeader}
-    ${overrideCalendar}
     ${overrideInvalidDate}
+    ${overrideCalendar}
+    ${overrideInputField}
 `;
 
 Wrapper.displayName = 'DatePickerWrapper';

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button, Div, Input, InputArea, Li, Span, Ul } from '../common/Base';
+import { formBackgroundColor } from '../common/Color';
 import { fontSize } from '../common/Font';
 import { Size } from '../common/Size';
 
@@ -14,7 +15,7 @@ export const Wrapper = styled(Ul)`
     width: 100%;
     padding: ${Size.XL};
     border-radius: ${Size.XS};
-    background-color: #f7f9fb;
+    background-color: ${formBackgroundColor};
 `;
 
 export const FormTextInput = styled(Li)`
@@ -24,9 +25,12 @@ export const FormTextInput = styled(Li)`
 export const FormTextArea = styled(Li)`
     display: flex;
     flex-direction: column;
+    margin-bottom: ${Size.S};
 `;
 export const Label = styled(Span)`
     ${fontSize.S}
+    line-height: ${Size.L};
+    letter-spacing: 0.03rem;
     flex-grow: 1;
     flex-basis: 0;
 `;
@@ -36,11 +40,13 @@ export const TextInput = styled(Input)`
 `;
 
 export const TextArea = styled(InputArea)`
-    height: 240px;
+    height: ${Size.MessageArea};
     margin-top: ${Size.XS};
 `;
 
 export const SubmitButton = styled(Button)`
+    margin-top: ${Size.M};
+    float: right;
 `;
 
 Container.displayName = 'FormContainer';

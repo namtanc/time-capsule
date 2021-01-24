@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
-import { formatMessages } from '../Utils';
+import { formatMessages, getTodayTimeStamp } from '../Utils';
 import { Message } from '../models/Message';
 import { validateMessage } from './Validator';
 
@@ -16,15 +16,16 @@ export const WithFirebaseService = (WrappedComponent) => {
     useEffect(async () => {
         if (!isFirebaseInitialized()) {
             await firebase.initializeApp(process.env.FIREBASE_CONFIG);
-            const list = await fetchOpenedMessages();
-            setMessages(formatMessages(list));
+            await fetchOpenedMessages();
         }
     }, [firebase.apps]);
 
     const fetchOpenedMessages = () => {
         return firebase.firestore().collection('capsules')
-            .where(Message.Field.targetedDate, '<', Date.now()).get()
+            .where(Message.Field.targetedDate, '<=', getTodayTimeStamp()).get()
             .then((users) => users.docs.map((u) => (u.data())))
+            .then((list) => formatMessages(list))
+            .then((list) => setMessages(list));
     }
     
     const insertMessage = (message) => {

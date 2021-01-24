@@ -1,23 +1,43 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
 
-import { white, buttonColor, placeHolderColor, black } from './Color';
+import { white, buttonColor, placeHolderColor, black, yellow, red, buttonActiveColor, inputFieldColor } from './Color';
 import { font, fontMonogram, fontSize } from './Font';
 import { Size } from './Size';
+
+import DinoYellowWait from '../../assets/dino-yellow-wait.gif';
+import DinoRedErr from '../../assets/dino-red-err.gif';
 
 export default createGlobalStyle`
     ${font}
 `;
 
 const colorBlack = css`color: ${black};`;
+export const invalidStyle = css`
+    background: ${white} url(${DinoRedErr}) no-repeat right top;
+    background-size: ${Size.L};
+    border-color: ${red};
+`;
+
 export const inputStyle = css`
-    padding: 0 ${Size.XS};
+    padding: ${Size.XXS} ${Size.L} ${Size.XXS} ${Size.XS};
     outline: none;
     border: 1px solid transparent;
     border-radius: ${Size.XS};
-    ${colorBlack}
+    background-color: ${white};
+    color: ${inputFieldColor};
 
     &::placeholder {
         color: ${placeHolderColor}
+    }
+
+    &:focus-within {
+        background: ${white} url(${DinoYellowWait}) no-repeat right top;
+        background-size: ${Size.L};
+        border-color: ${yellow};
+    }
+
+    &.invalid {
+        ${invalidStyle}
     }
 `;
 
@@ -42,7 +62,16 @@ export const Button = styled.button`
     border: none;
     border-radius: 6px;
     background-color: ${buttonColor};
+    transition: background-color 0.1s;
     cursor: pointer;
+
+    &:active, &:hover {
+        background-color: ${buttonActiveColor};
+    }
+
+    &:focus {
+        outline: none;
+    }
 `;
 
 export const Ul = styled.ul`
@@ -64,4 +93,19 @@ export const Div = styled.div`
 export const Span = styled.span`
     ${colorBlack}
     ${fontMonogram}
+`;
+
+export const scrollbarStyle = css`
+    &::-webkit-scrollbar {
+        width: ${Size.M};
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: ${white};
+        border-radius: ${Size.XS};
+    }
+
+    &::-webkit-scrollbar-button {
+        height: 0;
+    }
 `;

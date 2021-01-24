@@ -39,8 +39,8 @@ const Field = {
 }
 
 const PlaceHolder = {
-    [NAME]: 'name',
-    [EMAIL]: 'email',
+    [NAME]: 'Who are you?',
+    [EMAIL]: 'Put your email here :)',
     [MESSAGE]: '...Message...',
     [TARGETED_DATE]: 'Opened in',
     [TAGS]: 'Tags',

@@ -20,5 +20,6 @@ export const formatDateString = (timestamp) => {
     return date.toLocaleDateString('en-GB');
 }
 
+export const getTodayTimeStamp = () => new Date().setHours(0, 0, 0, 0);
 export const formatDateTimeStamp = (date) => date.setHours(0, 0, 0, 0);
-export const checkValidTargetedDate = (date) => formatDateTimeStamp(new Date()) > formatDateTimeStamp(date);
+export const checkValidTargetedDate = (date) => getTodayTimeStamp() > formatDateTimeStamp(date);

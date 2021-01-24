@@ -1,4 +1,5 @@
 import { Message } from '../models/Message';
+import { getTodayTimeStamp } from '../Utils';
 
 const createError = (field, errorMessage) => ({ field, errorMessage });
 const RULES = {
@@ -7,7 +8,7 @@ const RULES = {
         error: (field) => createError(field, `Doesnt' know ${field} to send`),
     },
     IsInFuture: {
-        check: (message, field) => message[Message.Field.targetedDate] >= message[Message.Field.recordedDate],
+        check: (message, field) => message[Message.Field.targetedDate] >= getTodayTimeStamp(),
         error: (field) => createError(field, 'Cannot send capsule to the past'),
     }
 };
